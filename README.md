@@ -33,6 +33,11 @@ Per ogni azione candidata:
 - Cede il turno all'avversario e calcola la risposta esatta dell'avversario interrogando il sotto-agente rilevato.
 - Calcola il valore dello stato finale e fa la media su tutte le determinizzazioni.
 
+
+### E. Gestione dello Stato e Registro Agenti Avversari
+Un dettaglio tecnico cruciale dell'architettura RO è la gestione della memoria dei sotto-agenti avversari. Molti di questi bot (come Dragapult o Iono) leggono un file `deck.csv` locale all'avvio per fare *card counting*. Se importati direttamente, leggerebbero il nostro mazzo Alakazam, sballando tutta la loro logica!
+Per risolvere questo problema, il sistema usa un registro dedicato (`official_agents.py`). Al momento dell'importazione, questo registro inietta "a forza" la lista esatta del mazzo avversario (es. le 60 carte esatte di Mega Lucario o Dragapult) nelle variabili globali del bot avversario (`my_deck`). In questo modo, quando simuliamo le loro mosse, i bot avversari ragionano con la consapevolezza perfetta del loro vero mazzo.
+
 ### D. Valutazione dello Stato e Curriculum Learning (Self-Play)
 La funzione di valutazione nei nodi foglia della ricerca (`_leaf_eval`) è potenziata dal Machine Learning. L'agente sfrutta un modello XGBoost (`_learned_pwin`) addestrato su migliaia di partite giocate in *self-play*.
 Per evitare che l'agente imparasse a battere solo se stesso o un unico tipo di mazzo, l'addestramento ha seguito un curriculum alternando avversari di livello e stile crescenti (Curriculum Learning). Infine, i pesi dell'euristica sono stati affinati ulteriormente tramite algoritmi genetici o regressioni (come visibile negli override di "memetic-tuned").
