@@ -45,7 +45,6 @@ La funzione di valutazione nei nodi foglia della ricerca (`_leaf_eval`) determin
 - **Economia di Energie**: quante energie abbiamo in gioco rispetto all'avversario.
 - **Sicurezza del Board**: enormi penalità assegnate se il giocatore non ha un Pokémon in posizione attiva.
 
-Sebbene non venga usato un modello predittivo in tempo reale durante le simulazioni, il **Machine Learning e l'Ottimizzazione Matematica sono stati impiegati offline**: i numerosi pesi della funzione di priorità delle carte (`WEIGHTS`) sono stati calibrati finemente tramite algoritmi genetici (come visibile negli override *"memetic-tuned"* e nel file di configurazione `alak_w.json`). Questo tuning ha permesso di scoprire le sinergie ottimali tra le priorità delle carte nel mazzo Alakazam.
 
 ---
 
