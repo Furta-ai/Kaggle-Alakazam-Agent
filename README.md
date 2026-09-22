@@ -47,5 +47,3 @@ La funzione di valutazione nei nodi foglia della ricerca (`_leaf_eval`) determin
 
 
 ---
-
-Questo approccio ibrido ci permette di navigare un ambiente ad informazione imperfetta con grande reattività. Anticipando le mosse esatte dell'avversario grazie al modello Rules-Opponent, l'agente trasforma l'incertezza in un vantaggio tattico devastante.
